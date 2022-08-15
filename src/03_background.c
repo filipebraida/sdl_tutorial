@@ -1,6 +1,8 @@
 #include <SDL2/SDL.h>  
 #include <SDL2/SDL_image.h>
 
+#include <stdlib.h>
+
 int main(void)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -15,7 +17,8 @@ int main(void)
 	// Game loop
 	while (jogando == 1)
 	{
-		SDL_SetRenderDrawColor(renderer, 111, 133, 255, 255); // Definindo a cor do fundo
+		int red = 100 + rand() % 50;
+		SDL_SetRenderDrawColor(renderer, red, 133, 255, 255); // Definindo a cor do fundo
 		SDL_RenderClear(renderer); // Limpando o renderer
 		
 		// Desenhando no renderer
@@ -38,8 +41,6 @@ int main(void)
 			// Se uma tecla for pressionada...
 			if (evento.type == SDL_KEYDOWN)
 			{ 
-				        printf("Key %d ('%c') is stuck. Press and release it.\n", key, key);
-				// Caso seja ESC...
 				if (evento.key.keysym.sym == SDLK_ESCAPE)
 				{
 					jogando = 0;
