@@ -11,6 +11,62 @@ Existe uma diretiva no arquivo Makefile com as bibliotecas do SDL 2.0 que precis
 $ make install
 ```
 
+## Exemplos de Código
+
+### Init
+
+Exemplo de inicialização do SDL.
+
+Execução:
+```
+$ make init && make run
+```
+
+### Window
+
+Exemplo Window.
+
+Execução:
+```
+$ make window && make run
+```
+
+### Background
+
+Exemplo Background.
+
+Execução:
+```
+$ make background && make run
+```
+
+### Image
+
+Exemplo Image.
+
+Execução:
+```
+$ make image && make run
+```
+
+### Keyboard
+
+Exemplo Keyboard.
+
+Execução:
+```
+$ make keyboard && make run
+```
+
+### Running
+
+Exemplo Running.
+
+Execução:
+```
+$ make running && make run
+```
+
 ## Referências
 * Videos dos jogos desenvolvidos na disciplina: [playlist](https://www.youtube.com/playlist?list=PLnzT8EWpmbkb8gP26aUQy1FbNQBLmcoss)
 * Video com a aula de SDL do monitor Andrew Wallace em 2020: [link](https://www.youtube.com/watch?v=zZyOQiEotsg)
