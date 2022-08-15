@@ -6,6 +6,8 @@
 #define HEIGHT 600
 #define IMG_PATH "assets/hero.png"
 
+int waiting(void);
+
 int main (int argc, char *argv[])
 {
 	// variable declarations
@@ -34,18 +36,7 @@ int main (int argc, char *argv[])
 	SDL_Rect texr; texr.x = WIDTH/2; texr.y = HEIGHT/2; texr.w = w/4; texr.h = h/4; 
 	
 	// main loop
-	while (1) {
-		
-		// event handling
-		SDL_Event e;
-		if(SDL_PollEvent(&e))
-        {
-			if (e.type == SDL_QUIT)
-				break;
-			else if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_ESCAPE)
-				break;
-		} 
-		
+	while (waiting()) {
 		// clear the screen
 		SDL_RenderClear(renderer);
 		// copy the texture to the rendering context
@@ -60,4 +51,19 @@ int main (int argc, char *argv[])
 	SDL_DestroyWindow(win);
 	
 	return 0;
+}
+
+int waiting(void)
+{
+	// event handling
+	SDL_Event e;
+	if(SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+			return 0;
+		else if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_ESCAPE)
+			return 0;
+	} 
+
+	return 1;
 }

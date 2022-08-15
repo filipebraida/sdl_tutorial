@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 
+int waiting(void);
+
 int main(void)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -20,33 +22,14 @@ int main(void)
 		int red = 100 + rand() % 50;
 		SDL_SetRenderDrawColor(renderer, red, 133, 255, 255); // Definindo a cor do fundo
 		SDL_RenderClear(renderer); // Limpando o renderer
-		
+
 		// Desenhando no renderer
 		// seu joguinho aqui
 		
 		// Apresentando o renderer
 		SDL_RenderPresent(renderer);
-
-		// Cria Pilha de eventos
-		SDL_Event evento; 
-
-		// Enquanto houver eventos...
-		while(SDL_PollEvent(&evento)) 
-		{
-			// Se tentar fechar a janela do jogo...
-			// Encerre o Game Loop.
-			if(evento.type == SDL_QUIT)
-				jogando = 0;
-			
-			// Se uma tecla for pressionada...
-			if (evento.type == SDL_KEYDOWN)
-			{ 
-				if (evento.key.keysym.sym == SDLK_ESCAPE)
-				{
-					jogando = 0;
-				} 
-			}
-		}
+		
+		jogando = waiting();
 	}
 
 	SDL_DestroyRenderer(renderer);
@@ -55,4 +38,31 @@ int main(void)
 	SDL_Quit();
 
 	return 0;
+}
+
+int waiting(void)
+{
+	// Cria Pilha de eventos
+	SDL_Event evento; 
+
+	// Enquanto houver eventos...
+	while(SDL_PollEvent(&evento)) 
+	{
+		// Se tentar fechar a janela do jogo...
+		// Encerre o Game Loop.
+		if(evento.type == SDL_QUIT)
+			return 0;
+		
+		// Se uma tecla for pressionada...
+		if (evento.type == SDL_KEYDOWN)
+		{ 
+			// Caso seja ESC...
+			if (evento.key.keysym.sym == SDLK_ESCAPE)
+			{
+				return 0;
+			} 	
+		}
+	}
+
+	return 1;
 }

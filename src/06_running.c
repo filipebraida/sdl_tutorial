@@ -5,6 +5,8 @@
 #define WIDTH 800
 #define HEIGHT 600
 #define HERO_WALK_RATE 10
+
+//https://opengameart.org/content/2d-hero
 #define IMG_PATH "assets/hero_spritesheet.png"
 
 typedef struct
