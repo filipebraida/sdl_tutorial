@@ -16,6 +16,9 @@ keyboard:
 running:
 	gcc -o game src/06_running.c -lSDL2main -lSDL2 -lSDL2_image
 
+plotting:
+	gcc -o game src/07_plotting.c -lSDL2main -lSDL2 -lSDL2_image
+
 run:
 	./game
 
